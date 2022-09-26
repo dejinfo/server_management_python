@@ -2,10 +2,10 @@ pipeline {
 agent any
 stages {
 	stage('Build') {
-	parallel {
+	
 		stage('Build') {
 		steps {
-			sh 'echo "building the repo"'
+			 'echo "building the repo"'
 		}
 		}
 	}
@@ -13,8 +13,8 @@ stages {
 
 	stage('Test') {
 	steps {
-		sh 'python3 test_app.py'
-		input(id: "Deploy Gate", message: "Deploy ${params.project_name}?", ok: 'Deploy')
+		echo 'testing'
+		
 	}
 	}
 
@@ -22,8 +22,7 @@ stages {
 	{
 	steps {
 		echo "deploying the application"
-		sh "sudo nohup python3 app.py > log.txt 2>&1 &"
+		
 	}
 	}
 }
-
